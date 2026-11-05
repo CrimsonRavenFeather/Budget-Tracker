@@ -1,4 +1,10 @@
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1'
+const rawBaseUrl =
+  import.meta.env.VITE_API_BASE_URL ||
+  (typeof window !== 'undefined' && window.location.protocol === 'https:'
+    ? 'https://v9o8db8oj6.execute-api.ap-south-1.amazonaws.com/api/v1'
+    : 'http://127.0.0.1:8000/api/v1')
+
+const BASE_URL = rawBaseUrl.replace(/\/+$/, '')
 
 let authToken = null
 
@@ -84,3 +90,4 @@ export const api = {
 }
 
 export { ApiError }
+

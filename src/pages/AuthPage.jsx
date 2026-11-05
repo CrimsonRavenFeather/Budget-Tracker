@@ -51,18 +51,24 @@ export default function AuthPage() {
 
         <form onSubmit={handleSubmit}>
           <div className="field" style={{ marginBottom: 14 }}>
-            <label>Email</label>
+            <label htmlFor="email">Email</label>
             <input
+              id="email"
+              name="email"
               type="email"
+              autoComplete="username"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="field" style={{ marginBottom: 18 }}>
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input
+              id="password"
+              name="password"
               type="password"
+              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
               required
               minLength={8}
               value={password}
